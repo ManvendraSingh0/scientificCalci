@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scientific_calculator</title>
+    <!-- <script src="calcicode.js"></script> -->
+    <link rel="stylesheet" href="csscalci.css">
+</head>
+
+
+<body background="WOOD.jpg">
+    
+    <div id="div1"> 
+        <h1>Scientific calculator</h1>
+    <div class="container">
+       
+        <div class="display">
+            <input id="screen" type="text" placeholder="0">
+
+        </div>
+
+        <div class="btns">
+            <div class="row">
+                <button id="ce" onclick="backspc()">CE</button>
+                <button onclick="fact()">x!</button>
+                <button class="btn">(</button>
+                <button class="btn">)</button>
+                <button class="btn">%</button>
+                <button id="ac" onclick="screen.value=''">AC</button>
+
+
+
+            </div>
+            <div class="row">
+                <button id="ce" onclick="sin()">sin</button>
+                <button onclick="pi()">∏</button>
+                <button class="btn">7</button>
+                <button class="btn">8</button>
+                <button class="btn">9</button>
+                <button class="btn">÷</button>
+
+
+
+            </div>
+            <div class="row">
+                <button id="ce" onclick="cos()">cos</button>
+                <button onclick="log()">log</button>
+                <button class="btn">4</button>
+                <button class="btn">5</button>
+                <button class="btn">6</button>
+                <button class="btn">x</button>
+
+
+
+            </div>
+            <div class="row">
+                <button id="ce" onclick="tan()">tan</button>
+                <button onclick="sqrt()">√</button>
+                <button class="btn">1</button>
+                <button class="btn">2</button>
+                <button class="btn">3</button>
+                <button class="btn">-</button>
+
+
+            </div>
+            <div class="row">
+                <button id="ce" onclick="e()">e</button>
+                <button onclick="pow()">x <span style="position:  relative; bottom:.4em;right:.1em;">y</span></button>
+                <button class="btn">0</button>
+                <button class="btn">.</button>
+                <button id="eval" onclick="screen.value=eval(screen.value)">=</button>
+                <button class="btn">+</button>
+                
+            </div>
+            
+
+        </div>
+    </div>
+
+    </div>
+    <script>
+        
+        var screen= document.querySelector('#screen');
+        var btn = document.querySelectorAll('.btn');
+        // to gettting thee value of btn
+        for(item of btn)
+        {
+            item.addEventListener('click',(e) =>
+            {
+                btnText=e.target.innerText;
+                if(btnText=='x')
+                {
+                    btnText='*';
+                }
+                if(btnText=='÷')
+                {
+                    btnText='/';
+                }
+                screen.value=screen.value+btnText;
+            }
+            );
+        }
+        function sin()
+        {
+            screen.value=Math.sin(screen.value);
+        }
+        function cos()
+        {
+            screen.value=Math.cos(screen.value);
+        }
+        function tan()
+        {
+            screen.value=Math.tan(screen.value);
+        }
+        function pow()
+        {
+            var fval = screen.value[0, screen.value.length - 2];
+            var lval = screen.value[screen.value.length - 1];
+            screen.value=Math.pow(fval,lval);
+        }
+        function sqrt()
+        {
+            screen.value=Math.sqrt(screen.value,2);
+        }
+        function log()
+        {
+            screen.value=Math.log(screen.value);
+        }
+        function pi()
+        {
+            screen.value=3.141459265359;
+        }
+        function e()
+        {
+            screen.value=2.71828182846;
+        }
+        function fact()
+        {
+            var i,num,f;
+            f=1;
+            num=screen.value;
+            for(i=1;i<=num;i++)
+            {
+                f=f*i;
+            }
+            
+            screen.value=f;
+        }
+        function backspc()
+        {
+            screen.value=screen.value.substr(0,screen.value.length-1);
+        }
+
+
+    </script>
+    
+</body>
+</html>
